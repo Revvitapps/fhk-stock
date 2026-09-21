@@ -34,7 +34,7 @@ export function Logo({ size }: LogoMarkProps) {
     <>
       <LogoMark size={size} />
       <span>
-        TM<em>Stock</em>
+        FHK <em>Stock</em>
       </span>
     </>
   );

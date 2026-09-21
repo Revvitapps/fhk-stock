@@ -1780,6 +1780,14 @@ p {
   padding-bottom: 3rem;
 }
 
+.footer-brand .footer-tagline {
+  margin-top: 0.6rem;
+  color: var(--gold);
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
 .footer-brand p {
   max-width: 34ch;
   margin-top: 1rem;

@@ -4,7 +4,7 @@ import { licenseTiers } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Licensing",
-  description: "What the TMStock Standard and Extended licenses cover, in plain English."
+  description: "What the FHK Stock Standard and Extended licenses cover, in plain English."
 };
 
 const rows: { use: string; standard: boolean; extended: boolean }[] = [

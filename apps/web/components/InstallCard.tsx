@@ -14,7 +14,7 @@ import {
 } from "@/lib/install";
 
 /**
- * "Install TMStock" card. Appears after the second visit or the first saved image,
+ * "Install FHK Stock" card. Appears after the second visit or the first saved image,
  * unless the app is already installed or the visitor dismissed it. The footer's
  * install button can also open it on demand.
  */
@@ -82,14 +82,14 @@ export function InstallCard() {
   if (!open) return null;
 
   return (
-    <aside className="install-card" aria-label="Install TMStock">
+    <aside className="install-card" aria-label="Install FHK Stock">
       <button type="button" className="install-close" aria-label="Dismiss" onClick={dismiss}>
         ×
       </button>
       <div className="install-head">
         <LogoMark size={44} />
         <div>
-          <strong>Keep TMStock on your home screen</strong>
+          <strong>Keep FHK Stock on your home screen</strong>
           <span>Opens instantly, works offline, and keeps your saved images close.</span>
         </div>
       </div>
@@ -113,7 +113,7 @@ export function InstallCard() {
                 Open your browser menu (<b>⋮</b> or the install icon in the address bar).
               </li>
               <li>
-                Choose <b>Install TMStock</b> or <b>Add to Home Screen</b>.
+                Choose <b>Install FHK Stock</b> or <b>Add to Home Screen</b>.
               </li>
             </>
           )}

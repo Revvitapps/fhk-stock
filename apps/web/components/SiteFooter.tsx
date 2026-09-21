@@ -18,6 +18,7 @@ export function SiteFooter() {
             <Link href="/" className="brand on-dark">
               <Logo />
             </Link>
+            <p className="footer-tagline">For His Kingdom</p>
             <p>
               A small, carefully edited library of worship, community, and everyday-ministry
               imagery. Currently in preview.
@@ -52,7 +53,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-bottom">
           <span>
-            © {new Date().getFullYear()} TMStock. Preview build, checkout not yet open. <ReplayIntroButton />
+            © {new Date().getFullYear()} FHK Stock. Preview build, checkout not yet open. <ReplayIntroButton />
           </span>
 
         </div>

@@ -4,8 +4,8 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     // stable identity so re-installs update the same app instead of adding a second icon
     id: "/",
-    name: "TMStock",
-    short_name: "TMStock",
+    name: "FHK Stock: For His Kingdom",
+    short_name: "FHK Stock",
     description: "Stock photography that looks like your Sunday.",
     start_url: "/",
     scope: "/",

@@ -90,7 +90,7 @@ export default async function AssetPage({ params }: AssetPageProps) {
             priority
           />
           <div className="asset-stage-mark" aria-hidden="true">
-            TMStock preview
+            FHK Stock preview
           </div>
         </div>
 

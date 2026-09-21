@@ -1,6 +1,6 @@
-# TMStock
+# FHK Stock
 
-Next.js App Router scaffold for a two-sided stock-photo marketplace.
+*For His Kingdom.* Stock photography for churches and ministries: a Next.js App Router marketplace, installable as a PWA.
 
 ## What is included
 

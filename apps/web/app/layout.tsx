@@ -22,7 +22,7 @@ const sans = Instrument_Sans({
 });
 
 const description =
-  "Stock photography for churches and ministries: worship, community, and everyday-ministry imagery with simple licensing.";
+  "FHK Stock (For His Kingdom) is stock photography for churches and ministries: worship, community, and everyday-ministry imagery with simple licensing.";
 
 const introGate =
   "try{if(sessionStorage.getItem('tm_intro')||matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.dataset.intro='skip'}catch(e){}";
@@ -35,24 +35,30 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://tmstock.vercel.app"),
-  applicationName: "TMStock",
+  metadataBase: new URL("https://fhkstock.vercel.app"),
+  applicationName: "FHK Stock",
   appleWebApp: {
     capable: true,
-    title: "TMStock",
+    title: "FHK Stock",
     // the header is espresso, so the iOS clock and battery read best in white on top of it
     statusBarStyle: "black-translucent"
   },
   title: {
-    default: "TMStock | Stock photography that looks like your Sunday",
-    template: "%s | TMStock"
+    default: "FHK Stock | For His Kingdom. Stock photography that looks like your Sunday.",
+    template: "%s | FHK Stock"
   },
   description,
   openGraph: {
-    title: "TMStock",
-    description,
     type: "website",
-    images: ["/catalog/worship-stage-01.jpg"]
+    url: "/",
+    siteName: "FHK Stock",
+    title: "FHK Stock | Stock photography that looks like your Sunday",
+    description
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FHK Stock | Stock photography that looks like your Sunday",
+    description
   }
 };
 

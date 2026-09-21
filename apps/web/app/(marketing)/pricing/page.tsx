@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Simple pricing for TMStock: single images, credit packs, and a plan for whole church teams."
+  description: "Simple pricing for FHK Stock: single images, credit packs, and a plan for whole church teams."
 };
 
 const plans = [

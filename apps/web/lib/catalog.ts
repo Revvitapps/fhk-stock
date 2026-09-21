@@ -77,7 +77,7 @@ export const collections: Collection[] = [
 
 export const catalogAssets: CatalogAsset[] = [
   {
-    id: "TM-0001",
+    id: "FHK-0001",
     slug: "sunday-set-six-rows-back",
     title: "Sunday Set, Six Rows Back",
     collection: "worship",
@@ -90,7 +90,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["worship team", "stage", "band", "congregation", "sunday"]
   },
   {
-    id: "TM-0002",
+    id: "FHK-0002",
     slug: "lobby-after-service",
     title: "Lobby After Service",
     collection: "community",
@@ -103,7 +103,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["lobby", "coffee", "fellowship", "families", "conversation"]
   },
   {
-    id: "TM-0003",
+    id: "FHK-0003",
     slug: "voices-in-the-room",
     title: "Voices in the Room",
     collection: "worship",
@@ -116,7 +116,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["congregation", "singing", "raised hand", "generations", "worship"]
   },
   {
-    id: "TM-0004",
+    id: "FHK-0004",
     slug: "baptism-sunday",
     title: "Baptism Sunday",
     collection: "services",
@@ -129,7 +129,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["baptism", "celebration", "pastor", "water", "congregation"]
   },
   {
-    id: "TM-0005",
+    id: "FHK-0005",
     slug: "welcome-at-the-door",
     title: "Welcome at the Door",
     collection: "community",
@@ -142,7 +142,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["greeters", "welcome", "family", "first impressions", "doors"]
   },
   {
-    id: "TM-0006",
+    id: "FHK-0006",
     slug: "sunday-message",
     title: "The Sunday Message",
     collection: "services",
@@ -155,7 +155,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["sermon", "pastor", "teaching", "bible", "congregation"]
   },
   {
-    id: "TM-0007",
+    id: "FHK-0007",
     slug: "potluck-line",
     title: "The Potluck Line",
     collection: "community",
@@ -168,7 +168,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["potluck", "fellowship hall", "food", "generations", "lunch"]
   },
   {
-    id: "TM-0008",
+    id: "FHK-0008",
     slug: "behind-the-board",
     title: "Behind the Board",
     collection: "worship",
@@ -181,7 +181,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["sound booth", "volunteer", "audio", "tech team", "production"]
   },
   {
-    id: "TM-0009",
+    id: "FHK-0009",
     slug: "kids-ministry-craft-table",
     title: "Kids Ministry, Craft Table",
     collection: "nextgen",
@@ -194,7 +194,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["kids ministry", "children", "volunteers", "classroom", "crafts"]
   },
   {
-    id: "TM-0010",
+    id: "FHK-0010",
     slug: "small-group-tuesday-night",
     title: "Small Group, Tuesday Night",
     collection: "community",
@@ -207,7 +207,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["small group", "bible study", "coffee shop", "friends", "discussion"]
   },
   {
-    id: "TM-0011",
+    id: "FHK-0011",
     slug: "country-church-hymn",
     title: "Country Church Hymn",
     collection: "worship",
@@ -220,7 +220,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["hymn", "small church", "pews", "piano", "traditional"]
   },
   {
-    id: "TM-0012",
+    id: "FHK-0012",
     slug: "church-on-the-lawn",
     title: "Church on the Lawn",
     collection: "services",
@@ -233,7 +233,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["outdoor service", "lawn", "spring", "easter", "folding chairs"]
   },
   {
-    id: "TM-0013",
+    id: "FHK-0013",
     slug: "youth-night",
     title: "Youth Night",
     collection: "nextgen",
@@ -246,7 +246,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["youth group", "teenagers", "students", "youth room", "midweek"]
   },
   {
-    id: "TM-0014",
+    id: "FHK-0014",
     slug: "passing-the-tray",
     title: "Passing the Tray",
     collection: "services",
@@ -259,7 +259,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["communion", "hands", "sacrament", "bread", "cup"]
   },
   {
-    id: "TM-0015",
+    id: "FHK-0015",
     slug: "team-huddle",
     title: "Team Huddle",
     collection: "community",
@@ -272,7 +272,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["volunteers", "prayer", "team", "serving", "before service"]
   },
   {
-    id: "TM-0016",
+    id: "FHK-0016",
     slug: "sanctuary-at-golden-hour",
     title: "Sanctuary at Golden Hour",
     collection: "worship",
@@ -285,7 +285,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["sanctuary", "pews", "stained glass", "empty", "warm light"]
   },
   {
-    id: "TM-0017",
+    id: "FHK-0017",
     slug: "sunday-set-from-the-aisle",
     title: "Sunday Set, From the Aisle",
     collection: "worship",
@@ -298,7 +298,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["worship team", "stage", "band", "family", "sunday"]
   },
   {
-    id: "TM-0018",
+    id: "FHK-0018",
     slug: "cafe-light-remote-work",
     title: "Café Light, Remote Work",
     collection: "workspace",
@@ -311,7 +311,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["laptop", "headphones", "coffee shop", "student", "remote work"]
   },
   {
-    id: "TM-0019",
+    id: "FHK-0019",
     slug: "morning-study-notes",
     title: "Morning Study Notes",
     collection: "workspace",
@@ -324,7 +324,7 @@ export const catalogAssets: CatalogAsset[] = [
     tags: ["notebook", "coffee", "hands", "study", "devotional"]
   },
   {
-    id: "TM-0020",
+    id: "FHK-0020",
     slug: "cafe-study-sepia-edit",
     title: "Café Study, Sepia Edit",
     collection: "workspace",

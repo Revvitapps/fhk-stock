@@ -1,11 +1,11 @@
-/* TMStock PWA service worker.
+/* FHK Stock PWA service worker.
    Purpose: make the site installable and behave like a real app once it's on
    the home screen — instant relaunch, and it still opens (with a readable
    page) when the phone has no signal.
    Strategy: cache-first for immutable build assets, network-first for pages
    with a cached fallback, stale-while-revalidate for photos and icons. */
 
-const VERSION = "tmstock-v1";
+const VERSION = "fhkstock-v1";
 const SHELL = `${VERSION}-shell`;
 const ASSETS = `${VERSION}-assets`;
 const OFFLINE_URL = "/";

@@ -12,7 +12,7 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="shell site-header-inner">
-        <Link href="/" className="brand" aria-label="TMStock home">
+        <Link href="/" className="brand" aria-label="FHK Stock home">
           <Logo />
         </Link>
         <nav className="nav" aria-label="Primary">

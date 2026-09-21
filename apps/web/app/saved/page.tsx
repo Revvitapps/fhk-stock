@@ -15,7 +15,7 @@ export default function SavedPage() {
           <h1 className="display">Your shortlist.</h1>
           <p className="lede">
             Images you&apos;ve hearted, kept on this device so they&apos;re here the next time you open
-            TMStock.
+            FHK Stock.
           </p>
         </div>
       </section>

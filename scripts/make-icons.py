@@ -1,4 +1,4 @@
-"""Generates the TMStock aperture mark: PNG app icons plus the SVG path data
+"""Generates the FHK Stock aperture mark: PNG app icons plus the SVG path data
 used by components/Logo.tsx. Run: python3 scripts/make-icons.py"""
 import json
 import math
@@ -91,11 +91,59 @@ def render(size, pad, rounded):
     return img.resize((size, size), Image.LANCZOS)
 
 
+
+# ---- Favicon sizes -------------------------------------------------------------
+# At 16-48px the full mark (ring + hairline seams) turns to mush, so the favicon is
+# a bolder cut of the same lens: no outer ring, blades to the edge of the tile,
+# heavy seams, and a larger opening.
+def small_geometry():
+    global R_BLADE, R_HEX, V, P
+    R_BLADE, R_HEX = 26.0, 10.5
+    V = [hex_vertex(i) for i in range(N)]
+    P = [ray_circle(V[i], V[(i + 1) % N]) for i in range(N)]
+
+
+def render_small(size):
+    ss = 8
+    px = size * ss
+    img = Image.new("RGBA", (px, px), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([0, 0, px - 1, px - 1], radius=px * 0.22, fill=ESPRESSO + (255,))
+    scale = px / 64.0
+    tx = lambda p: (p[0] * scale, p[1] * scale)
+    for i in range(N):
+        d.polygon([tx(p) for p in blade_polygon(i)], fill=BLADES[i % 3] + (255,))
+    for i in range(N):
+        d.line([tx(V[i]), tx(P[i])], fill=ESPRESSO + (255,), width=max(1, round(2.6 * scale)))
+    d.polygon([tx(v) for v in V], fill=CREAM + (255,))
+    return img.resize((size, size), Image.LANCZOS)
+
+
+def small_svg():
+    hexes = lambda c: "#%02x%02x%02x" % c
+    f = lambda p: f"{p[0]:.2f} {p[1]:.2f}"
+    blades = "".join(
+        f'<path d="{blade_path(i)}" fill="{hexes(BLADES[i % 3])}" stroke="{hexes(ESPRESSO)}" stroke-width="2.6" stroke-linejoin="round"/>'
+        for i in range(N)
+    )
+    opening = "M" + " L".join(f(v) for v in V) + " Z"
+    return (
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">'
+        f'<rect width="64" height="64" rx="14" fill="{hexes(ESPRESSO)}"/>'
+        f'{blades}<path d="{opening}" fill="{hexes(CREAM)}"/></svg>\n'
+    )
+
+
 render(192, 0.1, True).save(os.path.join(ROOT, "public", "icon-192.png"))
 render(512, 0.1, True).save(os.path.join(ROOT, "public", "icon-512.png"))
 render(512, 0.2, False).save(os.path.join(ROOT, "public", "icon-maskable-512.png"))
 render(180, 0.12, False).convert("RGB").save(os.path.join(ROOT, "app", "apple-icon.png"))
-render(64, 0.08, True).save(os.path.join(ROOT, "app", "icon.png"))
+
+small_geometry()
+open(os.path.join(ROOT, "app", "icon.svg"), "w").write(small_svg())
+sizes = [16, 32, 48]
+frames = [render_small(n) for n in sizes]
+frames[-1].save(os.path.join(ROOT, "app", "favicon.ico"), format="ICO", sizes=[(n, n) for n in sizes], append_images=frames[:-1])
 
 print(json.dumps({
     "blades": [blade_path(i) for i in range(N)],

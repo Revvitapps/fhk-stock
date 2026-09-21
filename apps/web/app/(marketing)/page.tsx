@@ -50,7 +50,7 @@ export default function HomePage() {
           <div className="hero-copy">
             <div className="eyebrow on-dark">
               <span className="eyebrow-dot" />
-              Launch collection now in preview
+              For His Kingdom · launch collection in preview
             </div>
             <h1 className="display">
               Stock photography that looks like <em>your</em> Sunday.

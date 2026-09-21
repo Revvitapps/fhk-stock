@@ -46,7 +46,7 @@ export function LicensePicker({ asset }: LicensePickerProps) {
       </button>
       {added ? (
         <p className="license-note added" role="status">
-          Saved. Checkout opens when TMStock launches.
+          Saved. Checkout opens when FHK Stock launches.
         </p>
       ) : (
         <p className="license-note">One-time purchase. Yours to use forever.</p>

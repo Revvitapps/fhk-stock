@@ -13,7 +13,7 @@ export default function SignInPage() {
         <p className="kicker">Preview access</p>
         <h1>Take a look around.</h1>
         <p className="subtle">
-          TMStock accounts aren&apos;t open yet. Pick a role to explore that side of the marketplace
+          FHK Stock accounts aren&apos;t open yet. Pick a role to explore that side of the marketplace
           with sample data.
         </p>
         <RolePicker />

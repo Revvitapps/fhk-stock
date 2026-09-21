@@ -5,13 +5,13 @@ import { getCatalogAsset } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Contributors",
-  description: "Sell your church and ministry photography on TMStock. Keep your copyright and earn on every license."
+  description: "Sell your church and ministry photography on FHK Stock. Keep your copyright and earn on every license."
 };
 
 const benefits = [
   {
     title: "Keep your copyright",
-    body: "You license your work through TMStock on a non-exclusive basis. It stays yours, always."
+    body: "You license your work through FHK Stock on a non-exclusive basis. It stays yours, always."
   },
   {
     title: "A reviewer, not a robot",
@@ -41,7 +41,7 @@ export default function ContributorsPage() {
             You already shoot every Sunday. <em>Get paid for it.</em>
           </h1>
           <p className="lede">
-            TMStock is built around the people behind the camera at real churches. Bring your best
+            FHK Stock is built around the people behind the camera at real churches. Bring your best
             frames and we will handle review, delivery, and payouts.
           </p>
           <div className="stack">

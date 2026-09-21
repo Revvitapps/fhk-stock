@@ -4,7 +4,7 @@ import { getCollection } from "@/lib/catalog";
 
 export const metadata: Metadata = {
   title: "Browse images",
-  description: "Search the TMStock library of worship, community, and everyday-ministry imagery.",
+  description: "Search the FHK Stock library of worship, community, and everyday-ministry imagery.",
   robots: {
     index: false,
     follow: true
