@@ -1,67 +1,52 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { catalogAssets } from "@/lib/catalog";
+import { CatalogBrowser } from "@/components/CatalogBrowser";
+import { getCollection } from "@/lib/catalog";
 
 export const metadata: Metadata = {
-  title: "Search",
-  description: "Search and facet browsing surface for the TMStock marketplace scaffold.",
+  title: "Browse images",
+  description: "Search the TMStock library of worship, community, and everyday-ministry imagery.",
   robots: {
     index: false,
     follow: true
   }
 };
 
-export default function SearchPage() {
-  return (
-    <div className="route-shell">
-      <div className="shell">
-        <section className="section split">
-          <div className="panel">
-            <p className="kicker">Search contract</p>
-            <h1 className="section-title">Query, facets, ranking, then indexing jobs.</h1>
-            <p className="subtle">
-              This route is intentionally positioned for dynamic rendering or client-driven search,
-              not broad SEO indexing of query combinations.
-            </p>
-          </div>
-          <div className="panel">
-            <div className="list">
-              <div className="list-item">
-                <strong>Filterable fields</strong>
-                <span className="pill">keyword</span>
-              </div>
-              <div className="list-item">
-                <strong>Full-text fields</strong>
-                <span className="pill">text</span>
-              </div>
-              <div className="list-item">
-                <strong>Optional semantic field</strong>
-                <span className="pill">vector</span>
-              </div>
-            </div>
-          </div>
-        </section>
+type SearchPageProps = {
+  searchParams: Promise<{
+    q?: string | string[];
+    collection?: string | string[];
+  }>;
+};
 
-        <section className="section">
-          <div className="grid">
-            {catalogAssets.map((asset) => (
-              <Link key={asset.id} href={`/assets/${asset.slug}`} className="panel">
-                <p className="kicker">{asset.license}</p>
-                <div
-                  className="asset-media"
-                  style={{ aspectRatio: "4 / 3", backgroundImage: `url(${asset.image})` }}
-                />
-                <h3>{asset.title}</h3>
-                <p className="subtle">{asset.tags.join(", ")}</p>
-                <div className="meta">
-                  <span>{asset.category}</span>
-                  <span>{asset.price}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      </div>
-    </div>
+function first(value?: string | string[]) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const params = await searchParams;
+  const query = first(params.q) ?? "";
+  const collection = getCollection(first(params.collection) ?? "");
+
+  return (
+    <>
+      <section className="page-hero">
+        <div className="shell">
+          <p className="kicker on-dark">Browse</p>
+          <h1 className="display">{collection ? collection.name : "The full library."}</h1>
+          <p className="lede">
+            {collection
+              ? collection.blurb
+              : "Every image in the launch collection, searchable by moment, mood, or season."}
+          </p>
+        </div>
+      </section>
+      <section className="page-body shell">
+        <CatalogBrowser
+          key={`${query}-${collection?.slug ?? "all"}`}
+          initialQuery={query}
+          initialCollection={collection?.slug ?? null}
+        />
+      </section>
+    </>
   );
 }

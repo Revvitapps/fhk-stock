@@ -14,15 +14,15 @@ export function middleware(request: NextRequest) {
   const role = request.cookies.get("tmstock-role")?.value;
 
   if (!role) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
   if (pathname.startsWith("/admin") && role !== "admin") {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
   if (pathname.startsWith("/contributor") && !["admin", "contributor"].includes(role)) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return NextResponse.redirect(new URL("/sign-in", request.url));
   }
 
   return NextResponse.next();

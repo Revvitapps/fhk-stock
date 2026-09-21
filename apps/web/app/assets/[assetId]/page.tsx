@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCatalogAsset } from "@/lib/catalog";
+import { AssetCard } from "@/components/AssetCard";
+import { LicensePicker } from "@/components/LicensePicker";
+import { SaveButton } from "@/components/SaveButton";
+import { catalogAssets, getCatalogAsset, getCollection, getRelatedAssets } from "@/lib/catalog";
 
 type AssetPageProps = {
   params: Promise<{
@@ -8,13 +13,17 @@ type AssetPageProps = {
   }>;
 };
 
+export function generateStaticParams() {
+  return catalogAssets.map((asset) => ({ assetId: asset.slug }));
+}
+
 export async function generateMetadata({ params }: AssetPageProps): Promise<Metadata> {
   const { assetId } = await params;
   const asset = getCatalogAsset(assetId);
 
   if (!asset) {
     return {
-      title: "Asset not found"
+      title: "Image not found"
     };
   }
 
@@ -29,6 +38,14 @@ export async function generateMetadata({ params }: AssetPageProps): Promise<Meta
   };
 }
 
+function orientation(width: number, height: number) {
+  if (width === height) {
+    return "Square";
+  }
+
+  return width > height ? "Landscape" : "Portrait";
+}
+
 export default async function AssetPage({ params }: AssetPageProps) {
   const { assetId } = await params;
   const asset = getCatalogAsset(assetId);
@@ -37,58 +54,102 @@ export default async function AssetPage({ params }: AssetPageProps) {
     notFound();
   }
 
+  const collection = getCollection(asset.collection);
+  const related = getRelatedAssets(asset);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ImageObject",
     name: asset.title,
     description: asset.description,
-    contentUrl: asset.image
+    contentUrl: asset.image,
+    width: asset.width,
+    height: asset.height
   };
 
   return (
-    <div className="route-shell">
-      <div className="shell">
-        <section className="section split">
-          <div className="card asset-card">
-            <div
-              className="asset-media"
-              style={{
-                aspectRatio: "16 / 10",
-                backgroundImage: `url(${asset.image})`
-              }}
-            />
+    <div className="shell">
+      <nav className="crumbs" aria-label="Breadcrumb">
+        <Link href="/search">Browse</Link>
+        <span>/</span>
+        <Link href={{ pathname: "/search", query: { collection: asset.collection } }}>
+          {collection?.name}
+        </Link>
+        <span>/</span>
+        <span>{asset.title}</span>
+      </nav>
+
+      <div className="asset-layout">
+        <div className="asset-stage">
+          <Image
+            src={asset.image}
+            alt={asset.title}
+            width={asset.width}
+            height={asset.height}
+            sizes="(max-width: 1024px) 100vw, 60vw"
+            priority
+          />
+          <div className="asset-stage-mark" aria-hidden="true">
+            TMStock preview
           </div>
-          <div className="panel">
-            <p className="kicker">Canonical asset detail</p>
-            <h1 className="section-title">{asset.title}</h1>
-            <p className="subtle">
-              {asset.description}
-            </p>
-            <div className="list">
-              <div className="list-item">
-                <strong>Category</strong>
-                <span className="pill">{asset.category}</span>
-              </div>
-              <div className="list-item">
-                <strong>License</strong>
-                <span className="pill">{asset.license}</span>
-              </div>
-              <div className="list-item">
-                <strong>Price</strong>
-                <span className="pill">{asset.price}</span>
-              </div>
-              <div className="list-item">
-                <strong>Availability</strong>
-                <span className="pill">For sale</span>
-              </div>
+        </div>
+
+        <div className="asset-info">
+          <p className="kicker">{collection?.name}</p>
+          <h1>{asset.title}</h1>
+          <p className="subtle">{asset.description}</p>
+
+          <LicensePicker asset={asset} />
+          <SaveButton slug={asset.slug} title={asset.title} variant="inline" />
+
+          <dl className="spec-list">
+            <div>
+              <dt>Image ID</dt>
+              <dd>{asset.id}</dd>
             </div>
+            <div>
+              <dt>Preview size</dt>
+              <dd>
+                {asset.width} × {asset.height} px
+              </dd>
+            </div>
+            <div>
+              <dt>Orientation</dt>
+              <dd>{orientation(asset.width, asset.height)}</dd>
+            </div>
+          </dl>
+
+          <div className="tag-row">
+            {asset.tags.map((tag) => (
+              <Link key={tag} href={{ pathname: "/search", query: { q: tag } }}>
+                {tag}
+              </Link>
+            ))}
           </div>
-        </section>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        </div>
       </div>
+
+      <section className="section">
+        <div className="section-head">
+          <div>
+            <p className="kicker">Keep looking</p>
+            <h2 className="section-title">More like this.</h2>
+          </div>
+          <Link href="/search" className="text-link">
+            Browse everything →
+          </Link>
+        </div>
+        <div className="masonry">
+          {related.map((item) => (
+            <AssetCard key={item.id} asset={item} />
+          ))}
+        </div>
+      </section>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
   );
 }
