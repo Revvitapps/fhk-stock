@@ -9,3 +9,5 @@ dist
 
 *.tsbuildinfo
 _retired-images
+.content
+apps/web/public/uploads

@@ -1,25 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Instrument_Sans } from "next/font/google";
 import { InstallCard } from "@/components/InstallCard";
 import { Pwa } from "@/components/Pwa";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TabBar } from "@/components/TabBar";
+import { display, sans } from "@/lib/fonts";
 import "./globals.css";
-
-const display = Fraunces({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["opsz"],
-  variable: "--font-display",
-  display: "swap"
-});
-
-const sans = Instrument_Sans({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap"
-});
 
 const description =
   "FHK Stock (For His Kingdom) is stock photography for churches and ministries: worship, community, and everyday-ministry imagery with simple licensing.";
