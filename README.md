@@ -28,3 +28,11 @@
 ## Visual direction
 
 The initial UI uses a warm editorial palette and high-contrast serif display typography rather than default SaaS styling. This answers the request for a vogue-like feel while still keeping the codebase practical and easy to extend.
+
+## Client page editor (self-edit pilot)
+
+`/edit` opens a drag-and-drop editor for the homepage, built on [Puck](https://puckeditor.com) (MIT, self-hosted, no per-seat fees). Clients click text on the page to type over it, swap photos from the library or upload their own, drag sections in from the left, reorder or delete them, preview phone/tablet/desktop, and hit Publish.
+
+- Sections live in `apps/web/lib/editor/blocks.tsx` and reuse the site's own markup, so an edited page looks identical to the hand-built one. `lib/editor/config.tsx` decides which fields a client can touch.
+- Published pages are saved to Vercel Blob as timestamped JSON (`pages/home/<ms>.json`), so every publish is a restorable version. Locally they go to `apps/web/.content/`.
+- Env: `BLOB_READ_WRITE_TOKEN` (added automatically when a Blob store is connected to the Vercel project) and `EDITOR_PASSCODE` (falls back to `fhk-demo`).
